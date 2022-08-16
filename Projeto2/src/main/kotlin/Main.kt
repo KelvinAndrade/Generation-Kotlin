@@ -5,5 +5,5 @@ fun main (){
     val idade = readln().toInt()
 
     println("O seu ano de nascimento é: ${ano-idade}")
-    
+
 }
