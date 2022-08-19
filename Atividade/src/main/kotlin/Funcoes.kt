@@ -1,51 +1,57 @@
-fun  addmercadorias(produto:String){
-    while (true)
-        if (produto!= ""){
-            estoque.add(produto)
-            println("produto $produto adicionado com secesso!")
-        }else{
-            println("Produto invalido!")
-        }
+val stock = mutableListOf<String>()
+
+fun addproduct(product: String) {
+    if (product != "") {
+        stock.add(product)
+        println("$product adicionado com sucesso!")
+        println()
+    } else {
+        println("Valor Inválido")
+        println()
+    }
 }
-fun removeMecadoria() {
+
+
+fun removeproduct() {
     while (true) {
-        println("Qual Produto sera excluido? ")
-        val produtoexc = readln()
-        if (estoque.contains(produtoexc)) {
-            estoque.remove(produtoexc)
-            println("Produto $produtoexc excluido co secesso!")
-            break
-        } else {
-            println("O produto $produtoexc não existe")
-            println(estoque)
+        println("Agora digite o produto a ser excluído da lista ou digite 1 para retornar ao menu principal: ")
+        val product = readln()
 
+        if (stock.contains(product)) {
+            stock.remove(product)
+            println("Produto $product excluído com sucesso")
+            println()
+            break
+        } else if (product == "1") {
+            return main()
+        } else {
+            println("O produto $product não existe na lista")
         }
     }
 }
 
-fun Atualizar(){
+fun updateproduct() {
+    println("Digite o nome do produto que deseja atualizar ou digite 1 para retornar ao menu principal:  ")
+    val product = readln()
 
-    println("Qual Produto sera atualizado? ")
-    val produtoatt = readln()
-    if (estoque.contains(produtoatt)){
-        val posicao = estoque.indexOf(produtoatt)
-        println("Qual o novo nome do produto? ")
-        estoque[posicao] = readln()
-        println("Produto $produtoatt atualizado com secesso!")
-
-    }
-
-    else {
-        println("O produto $produtoatt não existe")
-
+    if (stock.contains(product)) {
+        val posicao = stock.indexOf(product)
+        println("Digite o novo nome do produto: ")
+        stock[posicao] = readln()
+        println("Produto atualizado com sucesso!")
+        println()
+    } else if (product == "1") {
+        return main()
+    } else {
+        println("O produto $product não existe na lista")
     }
 }
 
-fun ver(){
-
+fun getproduct() {
     println()
-    print(estoque)
-}
+    println(stock)
+    println()
+} 
 
 
 
