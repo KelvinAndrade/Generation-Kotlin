@@ -51,7 +51,7 @@ fun getproduct() {
     println()
     println(stock)
     println()
-} 
+}
 
 
 
