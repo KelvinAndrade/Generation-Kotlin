@@ -1,0 +1,3 @@
+C:\Users\Casa\IdeaProjects\Exercicio-classe\src\main\kotlin\Cliente.kt
+C:\Users\Casa\IdeaProjects\Exercicio-classe\src\main\kotlin\Estoque.kt
+C:\Users\Casa\IdeaProjects\Exercicio-classe\src\main\kotlin\Main.kt
