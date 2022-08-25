@@ -6,49 +6,61 @@ A classe precisará de métodos para adicionar, remover e listar os itens do atr
 Crie um método para verificar o nome ao inicializar a classe e, caso esteja vazio, jogue uma exceção.
 Ao instanciar a classe cliente na função main(), não esquecer de colocar dentro de um bloco try catch.*/
 
-var estoque = mutableListOf<String>("Arroz","Feijão","Macarão","Oleo","Cebola", "Massa de Tomate")
-fun main(){
-
-    print("Digite seu nome: ")
-    var nomeDigitado = readln()
-
-    print("Digite seu CPF: ")
-    var cpf = readln()
-
-    print("Digite seu RG: ")
-    var rg = readln()
-
-    var cliente = ClienteClass(nomeDigitado, cpf, rg)
 
 
-    while (true) {
-        println()
-        println("================CENTRAL DE ARMAZENAMENTO====================")
-        println()
-        println("***************DIGITE O NUMERO DA OPÇÃO DESEJADA***************")
+fun main() {
 
-        println("1- Adicionar Mercadorias")
-        println("2- Remover Mercadorias")
-        println("3- Renomear Mercadorias")
-        println("4- Ver Mercadorias No Estoque")
-        println("5- Fechar")
 
-        print("Digite uma das opções: ")
-        when (readln().toInt()){
+    try {
 
-            1->{
-                println("0 - Voltar para o Menu Principal ")
-                println("Qual o produto que será adicionado: ")
-                val produto = readln()
-                addMercadorias(produto)
+        print("Digite o seu nome: ")
+        val nome = readln()
+
+        print("Digite o endereço: ")
+        val end = readln()
+
+        print("Digite seu telefone: ")
+        val tel = readln()
+
+        val cliente = Cliente(nome, end, tel)
+
+        while (true){
+
+            println()
+            println("Menu")
+            println("1 - Adicionar compra")
+            println("2 - Remover compra")
+            println("3 - Listar compras")
+            println("4 - Sair")
+
+            print("Opc: ")
+            val opc = readln().toInt()
+            println()
+
+            when(opc){
+
+                1 -> {
+                    print("Digite o produto que deseja adicionar: ")
+                    val prod = readln()
+                    cliente.addCompra(prod)
+                }
+                2 -> {
+                    print("Digite o produto que deseja remover: ")
+                    val prod = readln()
+                    cliente.removeCompra(prod)
+                }
+                3 -> {
+                    cliente.exibirCompras()
+                }
+                4 -> break
+                else -> println("Opção Inválida")
+
             }
-            2-> removeMecadorias()
-            3-> atualizaMercadorias()
-            4-> exibirMercadorias()
-            5-> break
-            else  -> println("Opção inválida")
+
         }
 
+    }catch (e: Exception){
+        println(e.message)
     }
 
 }

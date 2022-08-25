@@ -1,31 +1,47 @@
 package storeclass
 
-    class ClienteClass(
+class Cliente (
+    var nome: String,
+    var endereco: String,
+    var telefone: String
+){
 
-        var nome: String,
-        cpf: String,
-        rg: String
-    ) {
-        //lateinit
-        lateinit var apelido: String
-        var cnpj = 0
+    private val listaCompras = mutableListOf<String>()
+    val listaComprasTest: List<String> = listaCompras
 
-        constructor(
-            nome: String,
-            cpf: String,
-            rg: String,
-            apelido: String,
-            cnpj: Int
-        ): this( nome, cpf, rg){
-            this.apelido = apelido
-            this.cnpj = cnpj
-        }
-        fun atualizanome(){
-            println("Digite o novo nome? ")
-            val nomeAtt = readln()
-            println("O $nome atualizado com sucesso!")
-            nome = nomeAtt
-            println("O novo nome é: $nome")
-        }
-
+    init {
+        checarDados()
     }
+
+    fun addCompra(compra: String){
+        if(compra.isNotBlank()){
+            listaCompras.add(compra)
+            println("Produto adicionado com sucesso!")
+        }else{
+            println("Produto Inválido")
+        }
+    }
+
+    fun removeCompra(compra: String){
+        if(listaCompras.contains(compra)){
+            listaCompras.remove(compra)
+            println("Produto removido com sucesso!")
+        }else{
+            println("O produto $compra não existe na lista!")
+        }
+    }
+
+    fun exibirCompras(){
+        println("Lista de Compras\n")
+        listaCompras.forEach {
+            println(it)
+        }
+    }
+
+    private fun checarDados(){
+        if(nome.isBlank()){
+            throw Exception("Cadastro feito de maneira incorreta!")
+        }
+    }
+
+}
